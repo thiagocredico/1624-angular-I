@@ -1,0 +1,45 @@
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Pages } from '../constants/pages.enum';
+import { MenuItem } from '../models/menu-item.model';
+
+@Component({
+  selector: 'app-sidebar',
+  imports: [],
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.css',
+})
+export class SidebarComponent {
+  @Output() redirectToPageEmitter = new EventEmitter<Pages>();
+
+  menuItems: MenuItem[] = [
+    {
+      label: 'Dashboard',
+      icon: '',
+      page: Pages.DASHBOARD,
+      selected: true,
+    },
+    {
+      label: 'Extrato',
+      icon: '',
+      page: Pages.TRANSACTIONS,
+      selected: false,
+    },
+  ];
+
+  redirectToPage(page: Pages): void {
+    this.redirectToPageEmitter.emit(page);
+  }
+
+  /*
+    Comunicação entre components
+      Pai pra filho
+        Interpolação de string {{}}
+        Property Binding []
+      Filho para pai
+        Event binding ()
+      Pai para filho e filho para pai, ao mesmo tempo
+        Two way binding [()]
+      Comunicação entre componentes irmãos
+        Estado centralizado (services ou ngrx)
+  */
+}
