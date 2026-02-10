@@ -32,8 +32,9 @@ export class SidebarComponent {
 
   /*
     Comunicação entre components
+      DO .ts para o template
+        Interpolação de string {{}
       Pai pra filho
-        Interpolação de string {{}}
         Property Binding []
       Filho para pai
         Event binding ()

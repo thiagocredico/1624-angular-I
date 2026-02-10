@@ -1,2 +1,8 @@
-<app-dashboard></app-dashboard>
-<app-transactions-list></app-transactions-list>
+@switch (page) {
+  @case (pagesEnum.DASHBOARD) {
+    <app-dashboard></app-dashboard>
+  }
+  @case (pagesEnum.TRANSACTIONS) {
+    <app-transactions-list></app-transactions-list>
+  }
+}
