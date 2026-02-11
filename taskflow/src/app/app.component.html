@@ -1,8 +1,6 @@
 <app-header></app-header>
 
 <div class="page">
-  <app-sidebar
-    (redirectToPageEmitter)="handleRedirectToPages($event)"
-  ></app-sidebar>
-  <app-main-panel [page]="currentPage"></app-main-panel>
+  <app-sidebar></app-sidebar>
+  <app-main-panel></app-main-panel>
 </div>

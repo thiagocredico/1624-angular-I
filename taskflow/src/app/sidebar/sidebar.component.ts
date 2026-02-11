@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Pages } from '../constants/pages.enum';
+import { RouterService } from '../core/services/router.service';
 import { MenuItem } from '../models/menu-item.model';
 
 @Component({
@@ -9,7 +10,7 @@ import { MenuItem } from '../models/menu-item.model';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  @Output() redirectToPageEmitter = new EventEmitter<Pages>();
+  private readonly routerService = inject(RouterService);
 
   menuItems: MenuItem[] = [
     {
@@ -27,7 +28,7 @@ export class SidebarComponent {
   ];
 
   redirectToPage(page: Pages): void {
-    this.redirectToPageEmitter.emit(page);
+    this.routerService.setCurrentPage(page);
   }
 
   /*

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
-import { Pages } from './constants/pages.enum';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,33 @@ import { Pages } from './constants/pages.enum';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  currentPage: Pages = Pages.DASHBOARD;
+export class AppComponent implements OnInit {
+  obs = new Observable((observer) => {
+    let count = 0;
+    setInterval(() => {
+      // if (count === 3) {
+      //   observer.error('Houve um erro');
+      // }]
 
-  handleRedirectToPages(page: Pages): void {
-    this.currentPage = page;
-    console.log(this.currentPage);
+      if (count === 10) {
+        observer.complete();
+      }
+      observer.next(count);
+      count++;
+    }, 1000);
+  });
+
+  ngOnInit(): void {
+    this.obs.subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('Finalizou');
+      },
+    });
   }
 }
