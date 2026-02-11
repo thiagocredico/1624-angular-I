@@ -6,6 +6,7 @@ import { Pages } from '../../constants/pages.enum';
 })
 export class RouterService {
   private currentPage: Pages = Pages.TRANSACTIONS;
+  // Usar BehaviorSubject()
 
   setCurrentPage(page: Pages): void {
     this.currentPage = page;
