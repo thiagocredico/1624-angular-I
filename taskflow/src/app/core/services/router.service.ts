@@ -7,7 +7,7 @@ import { TransactionPagesEnum } from '../../main-panel/pages/transactions/consta
   providedIn: 'root',
 })
 export class RouterService {
-  private currentPage$ = new BehaviorSubject<Pages>(Pages.TRANSACTIONS);
+  private currentPage$ = new BehaviorSubject<Pages>(Pages.DASHBOARD);
   private transactionPage$ = new BehaviorSubject<TransactionPagesEnum>(
     TransactionPagesEnum.LIST,
   );
